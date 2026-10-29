@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#1d2116">
+  <title>Manual da Área da nutri · Júlia Monteiro (demonstração)</title>
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..600,0..100;1,9..144,300..600,0..100&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f4f5ef; --bg-2: #e9ecdf; --lav-bg: #f2eef8; --white: #fdfdfa;
+      --ink: #23251d; --ink-2: #555a4b; --line: rgba(35,37,29,.12);
+      --olive: #7d914e; --olive-600: #5e7135; --olive-l: #c8d6a8; --forest: #1d2116;
+      --plum: #6d5891; --plum-700: #574577; --lav: #b2a1cd; --lav-500: #9d85b8; --lav-300: #cfc3e4; --lav-100: #ece6f5;
+      --serif: "Fraunces", Georgia, serif; --sans: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+      color-scheme: light;
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body { margin: 0; background: var(--bg); color: var(--ink-2); font: 400 17px/1.65 var(--sans); -webkit-font-smoothing: antialiased; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: var(--plum); }
+    h1, h2, h3 { margin: 0; color: var(--ink); font-family: var(--serif); font-weight: 400; font-variation-settings: "SOFT" 60; letter-spacing: -.01em; }
+    h2 em, h1 em { color: var(--plum); font-style: italic; }
+    p { margin: 0 0 1em; }
+    b, strong { color: var(--ink); font-weight: 600; }
+
+    .barra-topo { position: sticky; top: 0; z-index: 5; display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 20px; background: rgba(244,245,239,.94); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); font-size: 15px; }
+    .barra-topo a { font-weight: 600; text-decoration: none; }
+    .barra-topo button { min-height: 40px; padding: 0 16px; border-radius: 999px; border: 1px solid rgba(35,37,29,.16); background: #fff; font: 600 14px var(--sans); color: var(--ink); cursor: pointer; }
+    .doc { max-width: 900px; margin: 0 auto; padding: 40px 20px 80px; }
+
+    .capa { padding: 56px 48px; border-radius: 28px; background: var(--forest); color: #d8d5c9; }
+    .capa__marca { display: flex; width: fit-content; align-items: center; gap: 14px; margin-bottom: 56px; --logo-p: #fff; --logo-g: #fff; }
+    .capa__marca svg { width: 52px; height: 56px; }
+    .capa__marca b { display: block; font: 700 26px/1 var(--sans); letter-spacing: -.01em; color: #fff; }
+    .capa .capa__marca small { display: block; margin: 8px 0 0; font-size: 11px; font-weight: 500; letter-spacing: .42em; text-transform: uppercase; color: #fff; }
+    .capa .kicker { color: var(--lav-300); }
+    .capa h1 { color: #fff; font-size: clamp(40px, 6vw, 64px); line-height: 1.04; }
+    .capa h1 em { color: var(--lav-300); }
+    .capa p { margin-top: 22px; font-size: 19px; max-width: 32em; }
+    .capa small { display: block; margin-top: 40px; font-size: 14px; color: rgba(255,255,255,.6); }
+
+    .kicker { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 14px; font: 700 13px/1.2 var(--sans); letter-spacing: .18em; text-transform: uppercase; color: var(--olive-600); }
+    .kicker::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: linear-gradient(180deg, var(--lav-500) 50%, var(--olive) 50%); }
+
+    .sumario { margin: 36px 0 0; padding: 30px 34px; border-radius: 24px; background: #fff; border: 1px solid var(--line); }
+    .sumario h2 { font-size: 28px; margin-bottom: 14px; }
+    .sumario ol { margin: 0; padding: 0; list-style: none; columns: 2; column-gap: 34px; counter-reset: s; }
+    .sumario li { counter-increment: s; padding: 6px 0; break-inside: avoid; }
+    .sumario li::before { content: counter(s, decimal-leading-zero); margin-right: 10px; font: 500 15px var(--serif); color: var(--plum); }
+    .sumario a { color: var(--ink); text-decoration: none; }
+
+    section.cap { margin-top: 64px; }
+    .cap > h2 { font-size: clamp(30px, 4vw, 40px); line-height: 1.12; margin-bottom: 18px; }
+    .cap h3 { font-size: 23px; margin: 30px 0 10px; }
+    .num-cap { display: block; margin-bottom: 6px; font: 500 15px var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--olive-600); }
+
+    figure { margin: 22px 0 26px; }
+    figure img { border-radius: 16px; box-shadow: 0 20px 40px -28px rgba(20,22,15,.55), 0 0 0 1px rgba(35,37,29,.08); }
+    figcaption { margin-top: 10px; font-size: 14px; color: var(--ink-2); }
+    .dupla { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: start; }
+    .dupla figure { margin: 0; }
+    .estreita img { max-width: 360px; }
+    .lado { display: grid; grid-template-columns: 300px 1fr; gap: 28px; align-items: start; margin: 22px 0; }
+    .lado figure { margin: 0; }
+
+    ol.passos { list-style: none; margin: 14px 0 20px; padding: 0; counter-reset: p; display: grid; gap: 12px; }
+    ol.passos li { counter-increment: p; position: relative; padding-left: 44px; }
+    ol.passos li::before { content: counter(p); position: absolute; left: 0; top: 0; width: 30px; height: 30px; border-radius: 50%; background: var(--olive-600); color: #fff; font: 700 14px/30px var(--sans); text-align: center; }
+    ul.lista { margin: 10px 0 18px; padding-left: 0; list-style: none; display: grid; gap: 8px; }
+    ul.lista li { position: relative; padding-left: 24px; }
+    ul.lista li::before { content: ""; position: absolute; left: 4px; top: .68em; width: 8px; height: 8px; border-radius: 50%; background: var(--lav); }
+
+    table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 14px 0 22px; background: #fff; border: 1px solid var(--line); border-radius: 18px; overflow: hidden; font-size: 15.5px; }
+    th { padding: 12px 16px; text-align: left; background: var(--forest); color: #fff; font-size: 12.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+    td { padding: 12px 16px; vertical-align: top; border-top: 1px solid var(--line); line-height: 1.45; }
+    tbody tr:first-child td { border-top: 0; }
+    td code, p code, li code { font-family: var(--sans); font-weight: 600; font-size: .95em; color: var(--plum-700); background: var(--lav-100); padding: 1px 7px; border-radius: 6px; white-space: nowrap; }
+    .tag { display: inline-block; padding: 1px 9px; border-radius: 999px; font-size: 12.5px; font-weight: 700; }
+    .t-ag { background: var(--lav-100); color: var(--plum-700); } .t-co { background: #e1ead0; color: #3f4d22; }
+    .t-re { background: #e6e6e1; color: #4d4f47; } .t-fa { background: #f6dfd9; color: #a3402f; } .t-ca { background: #ececea; color: #77786f; text-decoration: line-through; }
+    .cor { display: inline-block; width: 12px; height: 12px; border-radius: 4px; vertical-align: -1px; margin-right: 6px; }
+
+    .nota { margin: 20px 0; padding: 18px 22px; border-radius: 18px; background: var(--lav-bg); border-left: 4px solid var(--plum); }
+    .nota > b:first-child { display: block; margin-bottom: 4px; color: var(--plum-700); }
+    .nota p:last-child { margin-bottom: 0; }
+    .dica { margin: 20px 0; padding: 16px 20px; border-radius: 18px; background: #e9eedc; border-left: 4px solid var(--olive-600); }
+    .dica > b:first-child { color: var(--olive-600); }
+    .alerta { margin: 20px 0; padding: 16px 20px; border-radius: 18px; background: #fbefec; border-left: 4px solid #a3402f; }
+    .fim { margin-top: 64px; padding: 40px; border-radius: 24px; background: var(--olive-600); color: rgba(255,255,255,.9); text-align: center; }
+    .fim h2 { color: #fff; font-size: 34px; }
+    .fim p { margin: 12px 0 0; }
+
+    @media (max-width: 680px) {
+      body { font-size: 16px; }
+      .capa { padding: 40px 26px; }
+      .sumario ol { columns: 1; }
+      .dupla, .lado { grid-template-columns: 1fr; }
+      table { font-size: 14px; }
+      th, td { padding: 10px 12px; }
+    }
+
+    /* ---------- impressão / PDF (A4) ---------- */
+    @page { size: A4; margin: 15mm 15mm 16mm; }
+    @media print {
+      body { background: #fff; font-size: 10.6pt; line-height: 1.55; }
+      .barra-topo { display: none; }
+      .doc { max-width: none; padding: 0; }
+      .capa { min-height: 258mm; border-radius: 6mm; margin: 0; padding: 26mm 20mm; display: flex; flex-direction: column; justify-content: center; }
+      .capa__marca svg { width: 15mm; height: 16mm; }
+      .capa h1 { font-size: 40pt; }
+      .capa p { font-size: 13pt; }
+      .sumario { break-before: page; margin-top: 0; border: 0; padding: 0; }
+      .sumario h2 { font-size: 22pt; margin-bottom: 8mm; }
+      .sumario ol { columns: 1; font-size: 13pt; }
+      .sumario li { padding: 2.2mm 0; border-bottom: 1px solid var(--line); }
+      section.cap { break-before: page; margin-top: 0; }
+      .cap > h2 { font-size: 24pt; }
+      .cap h3 { font-size: 14pt; margin-top: 6mm; break-after: avoid; }
+      figure, table, .nota, .dica, .alerta, .lado, .dupla { break-inside: avoid; }
+      .pdf-menor img { max-width: 82%; }
+      #celular .dupla img { max-width: 62mm !important; }
+      .lado { grid-template-columns: 64mm 1fr; gap: 8mm; }
+      figure img { box-shadow: 0 0 0 1px rgba(35,37,29,.14); }
+      figcaption { font-size: 8.8pt; }
+      table { font-size: 9.6pt; }
+      th { font-size: 8pt; }
+      .fim { break-inside: avoid; }
+      a { color: var(--plum); text-decoration: none; }
+    }
+  </style>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-simbolo" viewBox="37.2 29.2 636.5 690.5"><g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="23.5"><path style="stroke:var(--logo-p,#9d85b8)" d="M52 347.5A303.5 303.5 0 0 1 659 347.5"/><g style="stroke:var(--logo-g,#7d914e)"><path d="M54.2 375.8C44.5 594 157.8 705 355.5 705C553.2 705 666.5 594 656.8 375.8"/><path d="M54.2 375.8C234.5 367 372 468.5 355.5 698"/><path d="M656.8 375.8C476.5 367 339 468.5 355.5 698"/><path d="M169.8 495.2C248.5 547.8 303.8 620.8 347.5 699.2"/><path d="M541.2 495.2C462.5 547.8 407.2 620.8 363.5 699.2"/><circle cx="355.5" cy="306.2" r="68.2"/></g></g></symbol>
+  </svg>
+  <div class="barra-topo">
+    <a href="painel.html">← Voltar à Área da nutri</a>
+    <button type="button" data-imprimir>Imprimir ou salvar em PDF</button>
+  </div>
+
+  <main class="doc">
+    <header class="capa">
+      <span class="capa__marca" role="img" aria-label="Júlia Monteiro — Nutricionista">
+        <svg aria-hidden="true"><use href="#i-simbolo"/></svg>
+        <span aria-hidden="true"><b>Júlia Monteiro</b><small>Nutricionista</small></span>
+      </span>
+      <p class="kicker">Manual de uso</p>
+      <h1>Área da nutri: <em>passo a passo.</em></h1>
+      <p>Como usar a sua agenda, os recados do site, os lembretes, os retornos e a Flora, a sua assistente.</p>
+      <small>Versão 1 · outubro de 2026</small>
+    </header>
+
+    <nav class="sumario" aria-label="Sumário">
+      <h2>Sumário</h2>
+      <ol>
+        <li><a href="#comecar">Antes de começar</a></li>
+        <li><a href="#tela">Conhecendo a tela</a></li>
+        <li><a href="#hoje">Hoje: o resumo do seu dia</a></li>
+        <li><a href="#agenda">Agenda e consultas</a></li>
+        <li><a href="#recados">Recados do site</a></li>
+        <li><a href="#lembretes">Lembretes</a></li>
+        <li><a href="#retornos">Retornos</a></li>
+        <li><a href="#flora">Flora, a sua assistente</a></li>
+        <li><a href="#celular">No celular</a></li>
+        <li><a href="#dados">Dados e backup</a></li>
+        <li><a href="#problemas">Problemas comuns</a></li>
+        <li><a href="#cuidados">Cuidados com os dados das pacientes</a></li>
+      </ol>
+    </nav>
+
+    <!-- 1 -->
+    <section class="cap" id="comecar">
+      <span class="num-cap">Capítulo 1</span>
+      <h2>Antes de <em>começar</em></h2>
+      <p>A <b>Área da nutri</b> é o seu espaço de trabalho dentro do site. Nela você vê as consultas do dia, organiza a agenda, recebe os pedidos que chegam pelo formulário do site, cria lembretes e conversa com a <b>Flora</b>, uma assistente que ajuda a marcar, confirmar e não esquecer nenhum retorno.</p>
+
+      <h3>Como abrir</h3>
+      <ol class="passos">
+        <li>Abra o seu site e role até o fim da página.</li>
+        <li>No rodapé, toque em <b>Área da nutri</b>.</li>
+        <li>Pronto: a área abre na aba <b>Hoje</b>.</li>
+      </ol>
+      <p>Você também pode abrir direto pelo endereço do site seguido de <code>/painel.html</code>.</p>
+
+      <div class="dica"><b>Dica:</b> salve a área nos favoritos do computador. No celular, adicione à tela inicial para abrir como um aplicativo: no iPhone (Safari), toque em <b>Compartilhar → Adicionar à Tela de Início</b>; no Android (Chrome), toque em <b>⋮ → Adicionar à tela inicial</b>.</div>
+
+      <div class="nota">
+        <b>Sobre esta versão</b>
+        <p>Nesta primeira versão, as informações ficam salvas <b>no próprio navegador</b> onde você usa a área. Por isso, use sempre o mesmo navegador e o mesmo aparelho e faça backup com frequência (veja o capítulo 10).</p>
+        <p>Na versão final, você vai entrar com <b>e-mail e senha</b>, e tudo fica guardado com segurança, acessível do computador e do celular.</p>
+      </div>
+    </section>
+
+    <!-- 2 -->
+    <section class="cap" id="tela">
+      <span class="num-cap">Capítulo 2</span>
+      <h2>Conhecendo <em>a tela</em></h2>
+      <figure>
+        <img src="assets/manual/visao-geral.jpg" alt="Tela da Área da nutri no computador, com o menu à esquerda, o resumo do dia no centro e a Flora à direita" width="1800" height="1125">
+        <figcaption>No computador, a área tem três partes: o menu (à esquerda), o conteúdo (no centro) e a Flora (à direita).</figcaption>
+      </figure>
+      <div class="lado">
+        <figure class="estreita"><img src="assets/manual/menu.jpg" alt="Menu lateral com as opções Hoje, Agenda, Recados e Lembretes" width="500" height="648" style="max-width:190px;"></figure>
+        <div>
+          <h3 style="margin-top:0;">O menu</h3>
+          <ul class="lista">
+            <li><b>Hoje:</b> o resumo do seu dia.</li>
+            <li><b>Agenda:</b> a semana e o mês, com todas as consultas.</li>
+            <li><b>Recados:</b> os pedidos que chegaram pelo site.</li>
+            <li><b>Lembretes:</b> tudo o que você não pode esquecer.</li>
+            <li><b>Dados e backup:</b> salvar e restaurar as suas informações.</li>
+            <li><b>Ver o site:</b> volta para o seu site.</li>
+          </ul>
+          <p>Os <b>números em lilás</b> ao lado de Recados e Lembretes mostram quantos recados novos chegaram e quantos lembretes já venceram.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 -->
+    <section class="cap" id="hoje">
+      <span class="num-cap">Capítulo 3</span>
+      <h2>Hoje: <em>o resumo do seu dia</em></h2>
+      <p>É a primeira tela que aparece. No topo, quatro números:</p>
+      <figure><img src="assets/manual/numeros.jpg" alt="Quatro cartões: consultas hoje, recados novos, lembretes e retornos a agendar" width="1440" height="188"></figure>
+      <ul class="lista">
+        <li><b>Consultas hoje</b> e quantas já estão confirmadas.</li>
+        <li><b>Recados novos</b> que chegaram pelo site.</li>
+        <li><b>Lembretes</b> abertos e quantos já venceram.</li>
+        <li><b>Retornos a agendar:</b> pacientes atendidas que ainda não têm a próxima consulta.</li>
+      </ul>
+      <p>Toque em qualquer um deles para ir direto ao assunto.</p>
+
+      <h3>Linha do dia</h3>
+      <div class="lado">
+        <figure><img src="assets/manual/linha-dia.jpg" alt="Linha do dia com as consultas em ordem de horário" width="794" height="1358"></figure>
+        <div>
+          <p>As consultas de hoje, em ordem de horário, com o início e o fim de cada uma.</p>
+          <ul class="lista">
+            <li><span class="cor" style="background:#6d5891"></span><b>Ameixa:</b> primeira consulta.</li>
+            <li><span class="cor" style="background:#5e7135"></span><b>Oliva:</b> retorno.</li>
+            <li><b>Câmera:</b> consulta online. <b>Alfinete:</b> presencial.</li>
+            <li><b>AGORA:</b> marca a consulta atual ou a próxima.</li>
+          </ul>
+          <p>Em cada consulta você tem os botões:</p>
+          <ul class="lista">
+            <li><b>Confirmar no WhatsApp:</b> abre a conversa com a mensagem de confirmação pronta.</li>
+            <li><b>Atendida:</b> registra que a consulta aconteceu e a Flora já oferece marcar o retorno.</li>
+            <li><b>Faltou:</b> registra a falta e a Flora oferece uma mensagem para remarcar.</li>
+            <li><b>Editar:</b> muda horário, tipo, modalidade ou observações.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Recados novos e lembretes</h3>
+      <div class="lado">
+        <figure><img src="assets/manual/recados-novos.jpg" alt="Cartão de recados novos com horários sugeridos" width="612" height="810"></figure>
+        <div>
+          <p>Ao lado da linha do dia aparecem os <b>recados novos</b>, cada um com dois horários livres sugeridos. <b>Tocar num horário já marca a primeira consulta</b> daquela paciente, cria o lembrete de confirmação e tira o recado da lista de novos.</p>
+          <p>Logo abaixo ficam os <b>lembretes de hoje</b> e os atrasados. Marque a caixinha quando terminar.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 -->
+    <section class="cap" id="agenda">
+      <span class="num-cap">Capítulo 4</span>
+      <h2>Agenda <em>e consultas</em></h2>
+      <figure class="pdf-menor">
+        <img src="assets/manual/agenda.jpg" alt="Agenda da semana com as consultas coloridas por tipo" width="1800" height="1125">
+        <figcaption>A agenda da semana. As faixas listradas são horários sem atendimento (fim de semana e almoço).</figcaption>
+      </figure>
+      <ul class="lista">
+        <li><b>Semana / Mês:</b> troca a visualização.</li>
+        <li><b>Setas ‹ ›:</b> semana (ou mês) anterior e seguinte. <b>Hoje</b> volta para a data atual.</li>
+        <li><b>Online e presencial:</b> filtra só um tipo de atendimento.</li>
+        <li><b>Toque num horário vazio</b> para marcar uma consulta naquele horário.</li>
+        <li><b>Toque numa consulta</b> para ver ou editar.</li>
+        <li>Abaixo da agenda aparece a <b>lista do dia selecionado</b>, com os botões Confirmar no WhatsApp, Confirmada, Atendida, Editar e Excluir.</li>
+      </ul>
+
+      <h3>Marcar uma consulta</h3>
+      <div class="lado">
+        <figure><img src="assets/manual/nova-consulta.jpg" alt="Formulário de nova consulta" width="960" height="1404"></figure>
+        <div>
+          <ol class="passos">
+            <li>Toque em <b>+ Nova consulta</b> (no topo da tela) ou num horário vazio da agenda.</li>
+            <li>Preencha o <b>nome</b> da paciente e o <b>WhatsApp</b> com DDD.</li>
+            <li>Escolha a <b>data</b> e a <b>hora</b>.</li>
+            <li>Escolha o <b>tipo</b>: primeira consulta ou retorno.</li>
+            <li>Escolha a <b>modalidade</b>: online, presencial ou a combinar.</li>
+            <li>Deixe marcado <b>“Criar lembrete para confirmar na véspera”</b>.</li>
+            <li>Toque em <b>Salvar</b>.</li>
+          </ol>
+          <p>Se o horário bater com outra consulta, a área avisa e mostra os horários livres daquele dia. A duração conta: na configuração atual, a <b>primeira consulta tem 60 minutos</b> e o <b>retorno, 30</b>.</p>
+        </div>
+      </div>
+
+      <h3>Situações de uma consulta</h3>
+      <table>
+        <thead><tr><th>Situação</th><th>Quando usar</th></tr></thead>
+        <tbody>
+          <tr><td><span class="tag t-ag">Agendada</span></td><td>A consulta foi marcada, mas a paciente ainda não confirmou.</td></tr>
+          <tr><td><span class="tag t-co">Confirmada</span></td><td>A paciente confirmou que vem.</td></tr>
+          <tr><td><span class="tag t-re">Realizada</span></td><td>A consulta aconteceu (botão <b>Atendida</b>).</td></tr>
+          <tr><td><span class="tag t-fa">Faltou</span></td><td>A paciente não veio.</td></tr>
+          <tr><td><span class="tag t-ca">Cancelada</span></td><td>A consulta foi desmarcada. O horário volta a ficar livre.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 5 -->
+    <section class="cap" id="recados">
+      <span class="num-cap">Capítulo 5</span>
+      <h2>Recados <em>do site</em></h2>
+      <p>Toda vez que alguém preenche o formulário <b>“Agende sua consulta”</b> no site, a mensagem vai para o seu WhatsApp (ou para o Direct do Instagram) <b>e vira um recado aqui</b>, com tudo o que ela respondeu.</p>
+      <figure class="pdf-menor"><img src="assets/manual/recado.jpg" alt="Recado de uma paciente com objetivo, relação com dietas, modalidade, contato e história" width="1440" height="762"></figure>
+      <ul class="lista">
+        <li><b>Objetivo:</b> o que ela procura (ex.: engravidar, reeducação alimentar).</li>
+        <li><b>Relação com dietas:</b> se já tentou antes e como foi.</li>
+        <li><b>Modalidade:</b> se prefere online ou presencial.</li>
+        <li><b>Contato:</b> o WhatsApp, se ela informou, e por onde a mensagem chegou. Sem WhatsApp, a mensagem dela foi pelo Direct do Instagram: responda por lá.</li>
+        <li><b>A história dela</b>, entre aspas, quando ela escreve.</li>
+      </ul>
+
+      <h3>O jeito mais rápido de responder</h3>
+      <ol class="passos">
+        <li>Leia o recado.</li>
+        <li>Toque num dos <b>horários sugeridos pela Flora</b>: a consulta é marcada, o lembrete de confirmação é criado e o recado passa para <b>Agendados</b>.</li>
+        <li>Toque em <b>Responder no WhatsApp</b>: a conversa abre com uma mensagem pronta oferecendo o horário. Confira e envie.</li>
+      </ol>
+      <p>Prefere combinar antes? Use <b>Responder no WhatsApp</b> primeiro e depois <b>Agendar</b>, que abre o formulário de consulta já preenchido.</p>
+      <p>Os botões <b>Marcar respondido</b>, <b>Arquivar</b> e <b>Excluir</b> organizam a lista. No topo, os filtros mostram <b>Novos, Respondidos, Agendados, Arquivados</b> ou <b>Todos</b>.</p>
+    </section>
+
+    <!-- 6 -->
+    <section class="cap" id="lembretes">
+      <span class="num-cap">Capítulo 6</span>
+      <h2><em>Lembretes</em></h2>
+      <figure><img src="assets/manual/lembretes.jpg" alt="Tela de lembretes com o campo para criar um novo e a lista" width="1440" height="576"></figure>
+      <h3>Criar um lembrete</h3>
+      <ol class="passos">
+        <li>Na aba <b>Lembretes</b>, escreva o que precisa lembrar (ex.: <i>enviar o plano da Juliana</i>).</li>
+        <li>Escolha a data e a hora.</li>
+        <li>Toque em <b>Adicionar</b>.</li>
+      </ol>
+      <p>Também dá para pedir para a Flora: <code>lembrar de enviar o plano da Juliana amanhã 9h</code>.</p>
+      <h3>Lembretes automáticos</h3>
+      <ul class="lista">
+        <li><b>Confirmar na véspera:</b> criado sozinho quando você marca uma consulta.</li>
+        <li><b>Agendar retorno:</b> criado quando você pede para a Flora lembrar depois (capítulo 7).</li>
+      </ul>
+      <p>Quando chega a hora, aparece um <b>aviso na tela</b> e o lembrete fica com a etiqueta <span class="tag t-fa">vencido</span> até você marcar a caixinha. Para receber o aviso também do navegador, toque em <b>Ativar avisos</b> e permita.</p>
+      <div class="nota"><b>Importante</b><p>Os avisos só aparecem com a área aberta no navegador.</p></div>
+    </section>
+
+    <!-- 7 -->
+    <section class="cap" id="retornos">
+      <span class="num-cap">Capítulo 7</span>
+      <h2><em>Retornos</em></h2>
+      <p>O retorno nutricional é parte do processo, e a área foi pensada para nenhuma paciente ficar sem ele.</p>
+      <div class="lado">
+        <figure><img src="assets/manual/flora-retorno.jpg" alt="Flora sugerindo horários de retorno depois de uma consulta" width="780" height="488"></figure>
+        <div>
+          <ol class="passos">
+            <li>No fim da consulta, toque em <b>Atendida</b> (na linha do dia ou na agenda).</li>
+            <li>A Flora sugere horários de <b>retorno perto de 30 dias</b> depois, no mesmo formato (online ou presencial).</li>
+            <li>Toque num horário: o retorno é marcado e o lembrete de confirmação é criado.</li>
+            <li>Toque em <b>Avisar no WhatsApp</b> para mandar a data para a paciente.</li>
+          </ol>
+          <p>Ainda não sabe a data? Toque em <b>Lembrar de agendar depois</b>: a Flora cria um lembrete uma semana antes do prazo.</p>
+          <h3>Retornos pendentes</h3>
+          <p>O cartão <b>Retornos a agendar</b> (na aba Hoje) e o pedido <code>retornos pendentes</code> para a Flora mostram quem foi atendida há 23 dias ou mais (uma semana antes do prazo de 30) e ainda não tem a próxima consulta, com horários sugeridos e um convite pronto para o WhatsApp.</p>
+          <p>O prazo de 30 dias pode ser mudado na configuração.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8 -->
+    <section class="cap" id="flora">
+      <span class="num-cap">Capítulo 8</span>
+      <h2>Flora, <em>a sua assistente</em></h2>
+      <p>A Flora fica à direita da tela (no celular, no botão redondo). É só escrever na caixa de baixo do mesmo jeito que você mandaria uma mensagem, e tocar na seta.</p>
+      <div class="dupla">
+        <figure><img src="assets/manual/flora-marcar.jpg" alt="Flora marcando uma consulta pedida por escrito" width="780" height="528"><figcaption>Pedido: “marcar Ana Teixeira amanhã 14h online”.</figcaption></figure>
+        <figure><img src="assets/manual/flora-ajuda.jpg" alt="Lista de exemplos que a Flora mostra quando você pede ajuda" width="780" height="1138"><figcaption>Escreva “ajuda” para ver exemplos e tocar neles.</figcaption></figure>
+      </div>
+
+      <div class="nota">
+        <b>A Flora não envia mensagens sozinha</b>
+        <p>Quando há algo para mandar à paciente, ela abre o WhatsApp com o texto pronto. Você confere, ajusta se quiser e envia.</p>
+        <p>Nesta versão, ela funciona por regras, direto no seu navegador, sem enviar dados a ninguém. Na versão final, pode ser ligada a uma inteligência artificial para entender pedidos ainda mais livres.</p>
+      </div>
+
+      <h3>O que pedir, e como escrever</h3>
+      <table>
+        <thead><tr><th>Você quer</th><th>Escreva, por exemplo</th></tr></thead>
+        <tbody>
+          <tr><td>Ver o dia ou a semana</td><td><code>resumo de hoje</code> · <code>como está amanhã?</code> · <code>resumo da semana</code></td></tr>
+          <tr><td>Ver horários livres</td><td><code>horários livres sexta à tarde</code> · <code>horários livres amanhã retorno</code></td></tr>
+          <tr><td>Marcar uma consulta</td><td><code>marcar Ana Teixeira amanhã 14h online</code></td></tr>
+          <tr><td>Marcar um retorno</td><td><code>retorno da Juliana daqui a 30 dias</code></td></tr>
+          <tr><td>Remarcar ou cancelar</td><td><code>remarcar Camila para quinta 10h</code> · <code>cancelar a consulta da Beatriz</code></td></tr>
+          <tr><td>Confirmar</td><td><code>confirmar consultas de amanhã</code> · <code>confirmar Juliana</code></td></tr>
+          <tr><td>Registrar a consulta</td><td><code>Letícia foi atendida</code> · <code>Renata faltou</code></td></tr>
+          <tr><td>Ver quem precisa de retorno</td><td><code>retornos pendentes</code></td></tr>
+          <tr><td>Ver os recados ou conflitos</td><td><code>recados novos</code> · <code>conflitos na agenda</code></td></tr>
+          <tr><td>Criar um lembrete</td><td><code>lembrar de enviar o plano da Mariana amanhã 9h</code></td></tr>
+        </tbody>
+      </table>
+
+      <h3>Palavras que ela entende</h3>
+      <ul class="lista">
+        <li><b>Dias:</b> hoje, amanhã, depois de amanhã, segunda a domingo, “sexta que vem”, 25/11, dia 25, daqui a 30 dias.</li>
+        <li><b>Horas:</b> 14h, 14:30, às 9, 3 da tarde.</li>
+        <li><b>Tipo:</b> retorno ou primeira consulta. Se você não disser, ela escolhe sozinha: quem já foi atendida vira retorno.</li>
+        <li><b>Modalidade:</b> online ou presencial.</li>
+      </ul>
+
+      <h3>Boas práticas</h3>
+      <ul class="lista">
+        <li><b>Faltou alguma informação?</b> Ela pergunta e mostra opções para tocar. Os botões dentro dos balões funcionam: horários, Desfazer, Ver na agenda, WhatsApp.</li>
+        <li><b>Errou?</b> Toque em <b>Desfazer</b> no balão da resposta.</li>
+        <li><b>Quer desistir no meio de uma pergunta?</b> Escreva <code>cancelar</code>.</li>
+        <li><b>Duas pacientes com o mesmo nome?</b> Use nome e sobrenome; se houver dúvida, ela mostra as opções.</li>
+        <li><b>Atalhos:</b> os botões logo acima da caixa de texto fazem os pedidos mais comuns com um toque.</li>
+      </ul>
+    </section>
+
+    <!-- 9 -->
+    <section class="cap" id="celular">
+      <span class="num-cap">Capítulo 9</span>
+      <h2>No <em>celular</em></h2>
+      <div class="dupla">
+        <figure><img src="assets/manual/celular.jpg" alt="Área da nutri no celular, com as abas na parte de baixo" width="1170" height="2532" style="max-width:300px;"><figcaption>As abas ficam embaixo, como num aplicativo.</figcaption></figure>
+        <figure><img src="assets/manual/celular-flora.jpg" alt="Flora aberta no celular" width="1170" height="2532" style="max-width:300px;"><figcaption>A Flora abre pelo botão redondo e fecha no X.</figcaption></figure>
+      </div>
+      <ul class="lista">
+        <li><b>Abas embaixo:</b> Hoje, Agenda, Recados e Lembretes.</li>
+        <li><b>Botão redondo lilás:</b> abre a Flora de qualquer tela.</li>
+        <li><b>Ícone de banco de dados</b> (ao lado de Nova consulta): Dados e backup.</li>
+        <li>A agenda da semana pode ser arrastada para os lados.</li>
+      </ul>
+    </section>
+
+    <!-- 10 -->
+    <section class="cap" id="dados">
+      <span class="num-cap">Capítulo 10</span>
+      <h2>Dados <em>e backup</em></h2>
+      <div class="lado">
+        <figure><img src="assets/manual/dados.jpg" alt="Janela Dados da área com os botões de backup" width="960" height="952"></figure>
+        <div>
+          <p>Em <b>Dados e backup</b> (no menu) você encontra:</p>
+          <ul class="lista">
+            <li><b>Baixar backup (.json):</b> salva um arquivo com todas as consultas, recados e lembretes. Guarde no seu Google Drive ou no e-mail.</li>
+            <li><b>Restaurar backup:</b> carrega um arquivo salvo antes. Substitui o que está na área.</li>
+            <li><b>Carregar dados de exemplo:</b> pacientes fictícias, só para treinar.</li>
+            <li><b>Apagar tudo:</b> limpa a área deste navegador.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="dica"><b>Recomendação:</b> nesta versão, faça um backup <b>toda sexta-feira</b> e sempre antes de trocar de computador ou de navegador.</div>
+      <div class="alerta"><b>Atenção:</b> “Apagar tudo” não tem volta. Antes de usar a área de verdade, apague os dados de exemplo e comece do zero.</div>
+    </section>
+
+    <!-- 11 -->
+    <section class="cap" id="problemas">
+      <span class="num-cap">Capítulo 11</span>
+      <h2>Problemas <em>comuns</em></h2>
+      <table>
+        <thead><tr><th>O que aconteceu</th><th>O que fazer</th></tr></thead>
+        <tbody>
+          <tr><td>Um pedido feito no site não apareceu nos Recados.</td><td>Nesta versão, o recado só aparece se o formulário foi enviado no mesmo navegador da área. A mensagem da paciente sempre chega no seu WhatsApp (ou Direct): responda por lá. Na versão final, os recados chegam de qualquer aparelho.</td></tr>
+          <tr><td>O horário que eu quero aparece como ocupado.</td><td>A duração conta: uma primeira consulta às 13h30 ocupa até 14h30. Escolha outro horário ou mude o tipo para retorno, se for o caso.</td></tr>
+          <tr><td>A Flora não entendeu o pedido.</td><td>Escreva o nome, o dia e a hora, como em “marcar Ana Teixeira sexta 10h”. Ou escreva <code>ajuda</code> e toque num exemplo.</td></tr>
+          <tr><td>Marquei ou apaguei algo sem querer.</td><td>Toque em <b>Desfazer</b> no balão da Flora. Se já passou, edite a consulta ou restaure o último backup.</td></tr>
+          <tr><td>Troquei de computador e a agenda sumiu.</td><td>Nesta versão, os dados ficam no navegador antigo. Baixe o backup nele e use <b>Restaurar backup</b> no novo.</td></tr>
+          <tr><td>O aviso do lembrete não apareceu.</td><td>A área precisa estar aberta. Para avisos do navegador, toque em <b>Ativar avisos</b> na aba Lembretes.</td></tr>
+          <tr><td>O botão do WhatsApp não aparece.</td><td>A consulta ou o recado está sem número. Toque em <b>Editar</b> e preencha o WhatsApp com DDD.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 12 -->
+    <section class="cap" id="cuidados">
+      <span class="num-cap">Capítulo 12</span>
+      <h2>Cuidados com os dados <em>das pacientes</em></h2>
+      <p>Nomes, telefones e histórias das pacientes são dados de saúde e merecem cuidado (Lei Geral de Proteção de Dados, LGPD).</p>
+      <ul class="lista">
+        <li><b>Não deixe a área aberta</b> em computadores compartilhados ou de uso público.</li>
+        <li><b>Guarde os backups</b> em local protegido por senha, como o seu Google Drive.</li>
+        <li><b>Escreva nas observações só o necessário</b> para organizar o atendimento. O prontuário continua no seu sistema de costume.</li>
+        <li><b>Na versão final,</b> a área terá login com senha e os dados ficarão num banco de dados protegido.</li>
+      </ul>
+    </section>
+
+    <footer class="fim">
+      <h2>Ficou com alguma dúvida?</h2>
+      <p>É só me chamar. E, sempre que quiser, escreva <b style="color:#fff">ajuda</b> para a Flora.</p>
+    </footer>
+  </main>
+  <script src="js/manual.js"></script>
+</body>
+</html>
